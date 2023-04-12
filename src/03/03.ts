@@ -1,4 +1,5 @@
 import {StudentType} from '../02/02';
+import exp from 'constants';
 
 
 debugger
@@ -14,4 +15,11 @@ export const addSkill = (student: StudentType,skill: string) => {
         id: new Date().getTime(),
         title: skill
     })
+}
+
+export function makeStudentActive (s: StudentType) {
+    s.isActive = true;
+}
+export function doesStudentLiveIn (s: StudentType, cityName: string) {
+    return s.address.city.title === cityName;
 }
