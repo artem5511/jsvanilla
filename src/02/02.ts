@@ -1,3 +1,24 @@
+type CityType = {
+    title: string
+    countryTitle: string
+}
+type AddressType = {
+    streetTitle: number
+        city: CityType[]
+    }
+type TechType = {
+    id: number
+    title: string
+}
+type StudentType = {
+    id: number
+    name: string
+    age: number
+    isActive: boolean
+    address: AddressType
+    technologies: TechType[]
+}
+
 const student = {
     "name": "Dimych",
     age: 32,
@@ -6,11 +27,26 @@ const student = {
         streetTitle: "Surganova 2",
         city: {
             title: "Minsk",
-            contryTitle: "Belarus"
+            countryTitle: "Belarus"
         }
-    }
+    },
+    technologies: [
+        {
+            id: 1,
+            title: "HTML"
+        },
+        {
+            id: 2,
+            title: "JS"
+        },
+        {
+            id: 3,
+            title: "REACT"
+        },
+    ]
 }
 
 console.log(student.age)
 console.log(student.name)
 console.log(student.address.city.title)
+console.log(student.technologies[2].title)
