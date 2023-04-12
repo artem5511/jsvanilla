@@ -1,4 +1,5 @@
-import {CityType} from './02_02';
+import {CityType} from '../02/02_02';
+import {addMoneyToBudget, createMessage, repairHouse, toFireStaff, toHireStaff} from './03';
 
 let city: CityType;
 
@@ -40,3 +41,41 @@ beforeEach(() => {
         citizensNumber: 1000000
     }
 })
+
+test("Budget should be changed for HOSPITAL", () => {
+    addMoneyToBudget(city.governmentBuildings[0], 100000);
+
+    expect(city.governmentBuildings[0].budget).toBe(300000);
+});
+
+test("Budget should be changed for FIRE-STATION", () => {
+    addMoneyToBudget(city.governmentBuildings[1], -100000);
+
+    expect(city.governmentBuildings[0].budget).toBe(200000);
+    expect(city.governmentBuildings[1].budget).toBe(400000);
+})
+
+test("Houses should be repared", () => {
+   repairHouse(city.houses[1]);
+
+    expect(city.houses[1].repaired).toBeTruthy();
+
+})
+test("staff should be increased", () => {
+    toFireStaff(city.governmentBuildings[0], 20);
+
+    expect(city.governmentBuildings[0].staffCount).toBe(180);
+})
+
+test("staff should be repared", () => {
+    toHireStaff(city.governmentBuildings[0], 20);
+
+    expect(city.governmentBuildings[0].staffCount).toBe(220);
+})
+
+test ("Greating message should be correct for city", () => {
+    const message = createMessage(city);
+
+    expect(message).toBe("Hello New York citizens. I want you be happy. All 1000000 men")
+})
+
