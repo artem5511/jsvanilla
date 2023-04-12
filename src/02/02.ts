@@ -3,14 +3,14 @@ type CityType = {
     countryTitle: string
 }
 type AddressType = {
-    streetTitle: number
-        city: CityType[]
+    streetTitle: string
+        city: CityType
     }
 type TechType = {
     id: number
     title: string
 }
-type StudentType = {
+export type StudentType = {
     id: number
     name: string
     age: number
@@ -19,7 +19,8 @@ type StudentType = {
     technologies: TechType[]
 }
 
-const student = {
+ export const student = {
+    id: 1,
     "name": "Dimych",
     age: 32,
     isActive: false,
