@@ -45,18 +45,18 @@
 
 //globalLE {} -> null
 //globalLE {counterCreator: Function, count: 3} -> null
-let count = 0;
-const counterCreator = () => {
+// let count = 0;
+// const counterCreator = () => {
   //[[environment]] -> globalLE
   //counterCreatorLE1{}
   //counterCreatorLE2{}
   // let count = 0; //counterCreatorLE {count: 0}
-  return () => {
+  // return () => {
     //[[environment]] -> counterCreatorLE1
     //[[environment]] -> counterCreatorLE2
-    console.log(++count);
-  };
-};
+//     console.log(++count);
+//   };
+// };
 
 // const counter1 = counterCreator(); //globalLE {counterCreator: Function, counter1: Function} -> null
 // const counter2 = counterCreator(); //globalLE {counterCreator: Function, counter1: Function} -> null
@@ -95,4 +95,22 @@ const factorial = (n) => {
   }
 };
 
-console.log(factorial(6));
+console.log(factorial(5));
+
+let x = 10;
+function somefn() {
+  console.log(x);
+}
+
+somefn();
+
+(function () {
+  let x =  20;
+  somefn();
+})();
+
+(function (innerFunc) {
+  let x = 30;
+  innerFunc();
+})(somefn())
+
